@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e8e6e3;
+  --foreground: #1a1a1a;
+  --surface: #ffffff;
+  --ink-muted: rgba(26, 26, 26, 0.6);
+  --brand-blue: #0057b8;
+  --brand-blue-dark: #004493;
+  --brand-red: #e30613;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-red: var(--brand-red);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "Segoe UI", Tahoma, sans-serif;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 2.5rem;
+  }
+}
+
+@keyframes hotspot-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@keyframes hotspot-ring-delay {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.65;
+  }
+  70% {
+    transform: scale(2.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.15);
+    opacity: 0;
+  }
+}
+
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-hotspot-ring {
+  animation: hotspot-ring 1.8s ease-out infinite;
+}
+
+.animate-hotspot-ring-delay {
+  animation: hotspot-ring-delay 1.8s ease-out infinite;
+  animation-delay: 0.9s;
+}
+
+.animate-draw-line {
+  transform-origin: center;
+  animation: draw-line 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[dir="rtl"] .animate-draw-line {
+  transform-origin: right;
+}
+
+[dir="ltr"] .animate-draw-line {
+  transform-origin: left;
+}
